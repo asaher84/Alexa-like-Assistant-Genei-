@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crypto Liquidity Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .prediction {
+      margin-top: 20px;
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Crypto Liquidity Predictor</h2>
+  <form method="POST" action="/predict">
+    <label for="price">Current Price</label>
+    <input type="number" name="price" step="any" required>
+
+    <label for="volume">Volume</label>
+    <input type="number" name="volume" step="any" required>
+
+    <label for="mkt_cap">mkt_cap</label>
+    <input type="number" name="mkt_cap" step="any" required>
+
+    <label for="change_1h">change_1h</label>
+    <input type="number" name="change_1h" step="any" required>
+
+    <label for="change_24h">price_change_24h</label>
+    <input type="number" name="change_24h" step="any" required>
+
+    <label for="change_7d">price_change_7d</label>
+    <input type="number" name="change_7d" step="any" required>
+
+    <button type="submit">Predict Liquidity</button>
+    {% if prediction_text %}
+      <div class="prediction">{{ prediction_text }}</div>
+    {% endif %}
+  </form>
+</div>
+
+<div class="footer">
+  <p>Project by <strong>Aditya Aher</strong> | Contact: <a href="mailto:adiaher84@gmail.com">adiaher84@gmail.com</a></p>
+</div>
+
+</body>
+</html>
